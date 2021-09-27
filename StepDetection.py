@@ -1,7 +1,12 @@
 from quaternion import *
 from scipy import signal
 
-
+# ####
+# in the sensor.csv file:
+# X axis: pedestrian moving direction
+# Y axis: it is perpendicular to both X and Z axis
+# Z axis: It is parallel to gravity pointing upward. Therefore, it will show +1g value
+# ####
 class Worker(object):
     def __init__(self):
         return
