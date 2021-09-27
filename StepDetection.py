@@ -1,34 +1,13 @@
-import multiprocessing
-import threading
 from quaternion import *
 from scipy import signal
-import timeit
-import numpy as np
-import random
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
 
 
 class Worker(object):
     def __init__(self):
-
         return
 
-    # def WritePrintLog(self, _str):
-    # 	print(_str)
-    # 	log_file = open(self.log_filename, 'a')
-    # 	log_file.write('\n')
-    # 	log_file.write(_str)
-    # 	log_file.close()
-    #
-    # 	return
-
     def Init(self):
-        # self.log_filename = 'log\\log_worker.txt'
-
         self.sensor_data_process = []
-
         self.timeValue = [] #added
         self.sampling_rate = 100 #400
         self.delta_time = 1.0 / self.sampling_rate
@@ -48,8 +27,6 @@ class Worker(object):
         PLP_Cutoff = 0.05
         self.PLP_b, self.PLP_a = signal.butter(1, 2.0 * PLP_Cutoff * self.delta_time, 'low')
 
-        self.min_length_for_process = 400
-
         self.reserve_data_length = 200
 
         self.walking = False
@@ -57,8 +34,6 @@ class Worker(object):
         self.step_number = 0
 
         self.start_pressure = -1.0 #added
-
-        # self.map_matching = MapMatching()
 
         return
 
@@ -148,7 +123,7 @@ class Worker(object):
             displacement.y *= 0.5
 
         self.Update(displacement.x, displacement.y, displacement.z)
-        #self.map_matching.ShowMap()
+
 
         self.step_number += 1
 
